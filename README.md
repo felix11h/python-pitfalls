@@ -1,5 +1,5 @@
 
-# next() with map()
+## next() with map()
 
 As an example, consider a function
 ```python
@@ -38,3 +38,20 @@ results in
 We do **not**(!) get an error and the data returned is incomplete.
 
 
+## avoid dateutil.parser and parse dates explicitly
+
+```python
+from datetime import datetime
+
+from dateutil.parser import parse
+
+datestr = "2020:06:28 10:06:34+02:00"
+
+print(parse(datestr))
+print(datetime.strptime(datestr, "%Y:%m:%d %H:%M:%S%z"))
+```
+returns
+```
+2021-06-25 10:06:34+02:00
+2020-06-28 10:06:34+02:00
+```
